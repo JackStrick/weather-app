@@ -22,10 +22,13 @@ class apiTools:
         url = url.format(city, key)
         r = requests.get(url)
         data = r.json()
-        lat = data[0]['lat']
-        lon = data[0]['lon']
-        geo = [lat, lon]
-        return geo
+        if (not data): # == 'city not found' || Checks that this is empty
+            return 0
+        else:
+            lat = data[0]['lat']
+            lon = data[0]['lon']
+            geo = [lat, lon]
+            return geo
         
         #print(a)
         
